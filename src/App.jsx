@@ -4,9 +4,10 @@ function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Usar variável de ambiente ou fallback para desenvolvimento
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+    // Usar variável de ambiente com fallback para IP público
+    const API_URL = process.env.REACT_APP_API_URL || 'http://18.216.181.169:8080';
     
+    console.log('API URL configurada:', API_URL);
     console.log('Fetching from:', `${API_URL}/api/products`);
     
     fetch(`${API_URL}/api/products`)
@@ -24,7 +25,7 @@ function App() {
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
       <h1 style={{ textAlign: "center", color: "#333" }}>Lista de Produtos</h1>
       <p style={{ textAlign: "center", fontSize: "12px", color: "#666" }}>
-        API: {process.env.REACT_APP_API_URL || 'http://localhost:8080'}
+        API URL: {process.env.REACT_APP_API_URL || 'http://18.216.181.169:8080'}
       </p>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {products.map((p) => (
